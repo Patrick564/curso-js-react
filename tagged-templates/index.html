@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui;
+            background-color: #f49097;
+            color: #f2f5ff;
+            font-size: 2em;
+            text-shadow: 1px 1px rgba(0, 0, 0, .5);
+        }
+
+        strong {
+            color: #f5e960;
+            padding: .15em .4em;
+            background: #dfb2f4;
+            border-radius: 20px;
+            border: 2px solid #f2f5ff;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <p>El trabajo duro supera al tralento natural</p>
+
+    <script>
+        function taggedTemplate(strings, ...dynamicValues) {
+            // console.log(strings, values)
+            let newContent = ''
+            strings.forEach((string, index) => {
+                // let strong = ''
+
+                // if (dynamicValues[index]) {
+                //    strong = `<strong>${dynamicValues}</strong>`
+                //}
+                // console.log(dynamicValues[index])
+                // console.log(string)
+                // newContent = newContent + string + strong
+
+                const strong = dynamicValues[index] ? `<strong>${dynamicValues[index]}</strong>` : ''
+
+                newContent += `${string} ${strong}`
+            })
+
+            // console.log(newContent)
+            return `<p>${newContent}</p>`
+        }
+
+        const message = taggedTemplate`El ${'trabajo duro'} supera al ${'talento natural'}`
+
+        document.body.innerHTML = message
+    </script>
+</body>
+</html>

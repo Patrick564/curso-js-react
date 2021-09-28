@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Styled components</title>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="container2"></div>
+
+    <script>
+        function component(strings, ...dynamicValues) {
+            return function () {
+                let newContent = strings.slice()
+
+                dynamicValues.forEach((value, index) => {
+                    newContent[index] += props[value]
+                })
+                console.log(newContent)
+                return newContent.join('')
+            }
+        }
+
+        let styled = {
+            tags: ['p', 'h1', 'h2', 'h3', 'div', 'span', 'button'],
+        }
+
+        styled.tags.forEach((tag) => {
+            styled[tag]= function (styles) {
+                return function (content) {
+                    return `
+                        <${tag} style="${styles}">
+                            ${content}
+                        </${tag}>
+                    `
+                }
+            }
+        })
+
+        const TitleStyle = styled.button`
+            color: orange;
+            font-family: system-ui;
+            text-shadow: 2px 2px 0 black;
+        `
+
+        const TitleStyle2 = styled.span`
+            color: orange;
+            font-family: system-ui;
+            text-shadow: 2px 2px 0 black;
+        `
+
+        const props = {
+            message: 'No te rindas',
+        }
+
+        const Title = component`--- ${'message'} ---`(props)
+        const Title2 = component`AAA ${'message'} ---`(props)
+
+        function render(component, container) {
+            container.innerHTML = component
+        }
+
+        render(TitleStyle2(Title2), window.container)
+        render(TitleStyle(Title), window.container2)
+    </script>
+</body>
+</html>
