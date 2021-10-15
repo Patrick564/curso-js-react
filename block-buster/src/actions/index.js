@@ -1,0 +1,9 @@
+const ADD_MOVIES = 'ADD_MOVIES'
+const SET_FILTER = 'SET_FILTER'
+const SEARCH_MOVIE = 'SEARCH_MOVIE'
+
+export {
+    ADD_MOVIES,
+    SET_FILTER,
+    SEARCH_MOVIE,
+}

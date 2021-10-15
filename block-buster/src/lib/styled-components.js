@@ -15,7 +15,7 @@ let styled = {
         'p', 'h1', 'h2', 'h3', 'div',
         'span', 'button', 'img', 'header',
         'footer', 'main', 'logo', 'input',
-        'button', 'form', 'select',
+        'button', 'form', 'select', 'section',
     ],
 }
 

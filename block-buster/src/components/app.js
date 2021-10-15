@@ -4,6 +4,7 @@ import { Header } from './header.js'
 import { Actions } from './actions.js'
 import { Search } from './search.js'
 import { Filters } from './filter.js'
+import { MovieList } from './movie-list.js'
 
 
 const AppStyled = styled.div``
@@ -16,9 +17,10 @@ class App extends Component {
                 new Actions({
                     children: [
                         new Search(),
-                        new Filters()
+                        new Filters(),
                     ]
-                })
+                }),
+                new MovieList(),
             ]
         })
     }
